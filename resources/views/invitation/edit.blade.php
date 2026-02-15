@@ -25,10 +25,26 @@
                 <div>
                     <label class="block text-sm font-semibold mb-2 text-stone-600">Nama Mempelai Wanita</label>
                     <input type="text" name="bride_name" value="{{ $invitation->bride_name }}" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-stone-800 transition">
+                    
+                    <label class="block text-sm font-semibold mt-4 mb-2 text-stone-600">Foto Mempelai Wanita</label>
+                    @if($invitation->bride_photo_path)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $invitation->bride_photo_path) }}" class="w-24 h-24 object-cover rounded-lg border border-stone-200">
+                        </div>
+                    @endif
+                    <input type="file" name="bride_photo" class="w-full text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-stone-100 file:text-stone-700 hover:file:bg-stone-200 cursor-pointer">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-2 text-stone-600">Nama Mempelai Pria</label>
                     <input type="text" name="groom_name" value="{{ $invitation->groom_name }}" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-stone-800 transition">
+                    
+                    <label class="block text-sm font-semibold mt-4 mb-2 text-stone-600">Foto Mempelai Pria</label>
+                    @if($invitation->groom_photo_path)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $invitation->groom_photo_path) }}" class="w-24 h-24 object-cover rounded-lg border border-stone-200">
+                        </div>
+                    @endif
+                    <input type="file" name="groom_photo" class="w-full text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-stone-100 file:text-stone-700 hover:file:bg-stone-200 cursor-pointer">
                 </div>
             </div>
 

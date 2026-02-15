@@ -10,7 +10,8 @@ class Invitation extends Model
         'user_id', 'slug', 'template', 'bride_name', 'groom_name', 'event_date', 
         'akad_time', 'resepsi_time', 'location_name', 'address', 
         'google_maps_link', 'love_story', 'bg_music_path', 'theme_color',
-        'dress_code', 'special_notes', 'social_links', 'bank_accounts'
+        'dress_code', 'special_notes', 'social_links', 'bank_accounts',
+        'bride_photo_path', 'groom_photo_path'
     ];
 
     protected $casts = [

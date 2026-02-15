@@ -80,7 +80,7 @@
             <h2 class="text-xl uppercase tracking-[0.5em] mb-4">Wedding Of</h2>
             <h1 class="text-7xl md:text-9xl mb-8 serif">{{ $invitation->bride_name }} & {{ $invitation->groom_name }}</h1>
             <p class="text-3xl font-light mb-12">{{ $invitation->event_date->format('d . m . Y') }}</p>
-            <a href="#opening" class="btn-accent px-10 py-4 rounded-full text-sm uppercase tracking-widest inline-block border border-white/20 backdrop-blur-sm">Open Invitation</a>
+            <a href="#opening" onclick="toggleMusic()" class="btn-accent px-10 py-4 rounded-full text-sm uppercase tracking-widest inline-block border border-white/20 backdrop-blur-sm">Open Invitation</a>
         </div>
     </section>
 
@@ -95,8 +95,8 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-20 px-4 mt-20">
             <div data-aos="fade-up">
-                <div class="aspect-[3/4] bg-gray-100 mx-auto mb-10 overflow-hidden grayscale hover:grayscale-0 transition duration-1000">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode($invitation->groom_name) }}&background=1a1a1a&color=fff&size=500" class="w-full h-full object-cover">
+                <div class="aspect-[3/4] bg-gray-100 mx-auto mb-10 overflow-hidden grayscale hover:grayscale-0 transition duration-1000 shadow-2xl">
+                    <img src="{{ $invitation->groom_photo_path ? asset('storage/' . $invitation->groom_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($invitation->groom_name) . '&background=1a1a1a&color=fff&size=500' }}" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-4xl mb-4 serif">{{ $invitation->groom_name }}</h3>
                 <p class="text-xs uppercase tracking-widest text-gray-400 mb-4 font-bold">The Groom</p>
@@ -104,8 +104,8 @@
                 <p class="text-sm text-gray-500">Son of Mr. & Mrs. {{ $invitation->groom_name }}</p>
             </div>
             <div data-aos="fade-up" data-aos-delay="200">
-                <div class="aspect-[3/4] bg-gray-100 mx-auto mb-10 overflow-hidden grayscale hover:grayscale-0 transition duration-1000">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode($invitation->bride_name) }}&background=1a1a1a&color=fff&size=500" class="w-full h-full object-cover">
+                <div class="aspect-[3/4] bg-gray-100 mx-auto mb-10 overflow-hidden grayscale hover:grayscale-0 transition duration-1000 shadow-2xl">
+                    <img src="{{ $invitation->bride_photo_path ? asset('storage/' . $invitation->bride_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($invitation->bride_name) . '&background=1a1a1a&color=fff&size=500' }}" class="w-full h-full object-cover">
                 </div>
                 <h3 class="text-4xl mb-4 serif">{{ $invitation->bride_name }}</h3>
                 <p class="text-xs uppercase tracking-widest text-gray-400 mb-4 font-bold">The Bride</p>

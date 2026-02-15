@@ -38,10 +38,20 @@ class InvitationController extends Controller
             'main_bg' => 'nullable|image|max:10240', // 10MB max
             'social_links' => 'nullable|array',
             'bank_accounts' => 'nullable|array',
+            'bride_photo' => 'nullable|image|max:10240',
+            'groom_photo' => 'nullable|image|max:10240',
         ]);
 
         if ($request->hasFile('bg_music')) {
             $validated['bg_music_path'] = $request->file('bg_music')->store('music', 'public');
+        }
+
+        if ($request->hasFile('bride_photo')) {
+            $validated['bride_photo_path'] = $request->file('bride_photo')->store('gallery', 'public');
+        }
+
+        if ($request->hasFile('groom_photo')) {
+            $validated['groom_photo_path'] = $request->file('groom_photo')->store('gallery', 'public');
         }
 
         $invitation = auth()->user()->invitations()->create($validated);
@@ -99,6 +109,8 @@ class InvitationController extends Controller
             'main_bg' => 'nullable|image|max:10240',
             'social_links' => 'nullable|array',
             'bank_accounts' => 'nullable|array',
+            'bride_photo' => 'nullable|image|max:10240',
+            'groom_photo' => 'nullable|image|max:10240',
         ]);
 
         if ($request->hasFile('bg_music')) {
@@ -106,6 +118,20 @@ class InvitationController extends Controller
                 Storage::disk('public')->delete($invitation->bg_music_path);
             }
             $validated['bg_music_path'] = $request->file('bg_music')->store('music', 'public');
+        }
+
+        if ($request->hasFile('bride_photo')) {
+            if ($invitation->bride_photo_path) {
+                Storage::disk('public')->delete($invitation->bride_photo_path);
+            }
+            $validated['bride_photo_path'] = $request->file('bride_photo')->store('gallery', 'public');
+        }
+
+        if ($request->hasFile('groom_photo')) {
+            if ($invitation->groom_photo_path) {
+                Storage::disk('public')->delete($invitation->groom_photo_path);
+            }
+            $validated['groom_photo_path'] = $request->file('groom_photo')->store('gallery', 'public');
         }
 
         $invitation->update($validated);

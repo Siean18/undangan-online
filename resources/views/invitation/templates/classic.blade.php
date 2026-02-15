@@ -67,7 +67,7 @@
             <p class="text-xl uppercase tracking-[0.3em] mb-4">The Wedding of</p>
             <h1 class="text-6xl md:text-8xl mb-6">{{ $invitation->bride_name }} & {{ $invitation->groom_name }}</h1>
             <p class="text-2xl italic mb-8">{{ $invitation->event_date->format('d . m . Y') }}</p>
-            <a href="#opening" class="btn-gold px-8 py-3 rounded-full text-lg uppercase tracking-widest animate-bounce inline-block">Buka Undangan</a>
+            <a href="#opening" onclick="toggleMusic()" class="btn-gold px-8 py-3 rounded-full text-lg uppercase tracking-widest animate-bounce inline-block">Buka Undangan</a>
         </div>
     </section>
 
@@ -84,7 +84,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16 px-4">
             <div data-aos="fade-right">
                 <div class="w-48 h-48 rounded-full bg-stone-200 mx-auto mb-6 border-4 border-gold shadow-xl flex items-center justify-center overflow-hidden">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode($invitation->groom_name) }}&background=C5A059&color=fff" class="w-full">
+                    <img src="{{ $invitation->groom_photo_path ? asset('storage/' . $invitation->groom_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($invitation->groom_name) . '&background=C5A059&color=fff' }}" class="w-full">
                 </div>
                 <h3 class="text-3xl text-gold mb-2">{{ $invitation->groom_name }}</h3>
                 <p class="text-sm uppercase tracking-widest mb-2 font-bold">Putra Dari:</p>
@@ -92,7 +92,7 @@
             </div>
             <div data-aos="fade-left">
                 <div class="w-48 h-48 rounded-full bg-stone-200 mx-auto mb-6 border-4 border-gold shadow-xl flex items-center justify-center overflow-hidden">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode($invitation->bride_name) }}&background=C5A059&color=fff" class="w-full">
+                    <img src="{{ $invitation->bride_photo_path ? asset('storage/' . $invitation->bride_photo_path) : 'https://ui-avatars.com/api/?name=' . urlencode($invitation->bride_name) . '&background=C5A059&color=fff' }}" class="w-full">
                 </div>
                 <h3 class="text-3xl text-gold mb-2">{{ $invitation->bride_name }}</h3>
                 <p class="text-sm uppercase tracking-widest mb-2 font-bold">Putri Dari:</p>
